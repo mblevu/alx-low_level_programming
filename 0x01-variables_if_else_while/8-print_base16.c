@@ -2,27 +2,24 @@
 /**
  * main - main block
  * Description: Print all possible combinations fo single-digit numbers.
- * Numbers must be separated by commas and a space.
  * You can only use `putchar` to print to console
- * You can only use `putchar` up to four times.
- * You are not allowed to use any variable of type `char`.
+ * You can only use `putchar` up to three  times.
  * Return: 0
  */
 int main(void)
 {
-	int i = 0;
+	int digit = 48; /*48; decimal rep of 0*/
 
-	while (i < 10)
+	while (digit <= 102) /*102; decimal rep of f*/
 	{
-		putchar(i + '0');
-		if (i < 9)
-		{
-			putchar(44);
-			putchar(32);
-		}
-		i++;
+		putchar(digit);
+
+		/* after 9 we jump till 96; `*/
+		if (digit == 57)
+			digit += 39;
+		++digit;
 	}
+	putchar('\n');
 
 	return (0);
 }
-
