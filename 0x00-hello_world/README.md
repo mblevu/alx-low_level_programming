@@ -1,7 +1,7 @@
 **Low-level programming**
 
-**C Programming Scripts and Programs
-**
+**C Programming Scripts and Programs**
+
 This repository contains a collection of C programming scripts and programs for various tasks.
 
 **Scripts**
