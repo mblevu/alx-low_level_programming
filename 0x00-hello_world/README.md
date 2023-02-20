@@ -36,4 +36,5 @@ This script generates the assembly code (Intel syntax) of a C code and saves it 
 This C program prints exactly "and that piece of art is useful" - Dora Korpar, 2015-10-19, followed by a new line, to the standard error.
 
 **Usage**
+
 To run any of the scripts or programs in this repository, simply download the file and execute it using the appropriate command for your operating system. For example, to run a C program, you will need to compile it first using a C compiler such as gcc, and then execute the resulting executable. To run one of the scripts, you can execute it directly from the command line.
