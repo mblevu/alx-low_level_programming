@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-*print_numberz - print 0123456789
+*print_numbers - print 0123456789
 * owned by Bwave ICT
 *Return: void
 */
 
-void print_numberz(void)
+void print_numbers(void)
 {
 	char c;
 
