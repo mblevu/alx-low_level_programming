@@ -16,7 +16,7 @@ int wildcmp(char *s1, char *s2);
 int get_length(char *s);
 int palindrome_check(char *s, int l);
 int is_palindrome(char *s);
-
+int findsrc(char *s, char c, int i, int p);
 
 
 #endif
