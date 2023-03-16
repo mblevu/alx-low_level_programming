@@ -22,13 +22,12 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	ptr = malloc(nmemb * size);
-	
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
 
-	c_ptr = (char*)ptr;
+	c_ptr = (char *)ptr;
 
 	for (i = 0; i < nmemb * size; i++)
 	{
