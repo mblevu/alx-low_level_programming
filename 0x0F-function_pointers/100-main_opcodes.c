@@ -2,44 +2,40 @@
 #include <stdlib.h>
 
 /**
- * print_opcodes - function to get opcodes
- * @num_bytes: number of bytes to print
+ * main - prints its own opcodes
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: 0 (Success)
  */
-
-void print_opcodes(int num_bytes)
+int main(int argc, char *argv[])
 {
-		char *main_ptr = (char *)print_opcodes;
-		int i;
-		for (i = 0; i < num_bytes; i++)
-		{
-			printf("%02x ", (unsigned char)main_ptr[i]);
-		}
-		printf("\n");
-}
+	int bytes, i;
+	char *arr;
 
-/**
- * main - entry point
- * @argc: argument coutn
- * @argv: argument vector
- * Return: return 0
- */
-
-int main(int argc, char **argv)
-{
 	if (argc != 2)
 	{
-		printf("Error!!!\n");
+		printf("Error\n");
 		exit(1);
 	}
-	int num_bytes = atoi(argv[1]);
 
-	if (num_bytes < 0)
+	bytes = atoi(argv[1]);
+
+	if (bytes < 0)
 	{
-		printf("Error!!!\n");
+		printf("Error\n");
 		exit(2);
 	}
-	print_opcodes(num_bytes);
 
+	arr = (char *)main;
+
+	for (i = 0; i < bytes; i++)
+	{
+		if (i == bytes - 1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%02hhx ", arr[i]);
+	}
 	return (0);
 }
-
