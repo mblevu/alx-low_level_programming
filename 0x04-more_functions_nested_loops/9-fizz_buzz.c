@@ -1,8 +1,8 @@
 #include <stdio.h>
 /**
- * main - netry point
+ * main - entry point
  * @i variable i
- * loop - checks for dvisibilibilty
+ * loop - checks for divisibilty
  * Return: 0
  */
 int main(void)
