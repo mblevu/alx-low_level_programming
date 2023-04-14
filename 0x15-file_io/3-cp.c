@@ -1,61 +1,50 @@
 #include "main.h"
 
 /**
- * main - entry point
- * @argc: - argument count
- * @argv: - arguments vector
- * Return: always 0 on success
+ * main- function to copy
+ * @argc: argument count
+ * @argv: arguments vectors
+ * Return: 0
  */
+
 
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to;
-	ssize_t bytes_read, bytes_written;
-	char buffer[BUFFER_SIZE];
-	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	int input_fd, output_fd, istatus, ostatus;
+	char buf[MAX_BUF_SIZE];
+	mode_t mode;
 
+	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
-		exit(97);
-	}
-	fd_from = open(argv[1], O_RDONLY);
-
-	if (fd_from == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: cant read from file %s\n", argv[1]);
-		exit(98);
-	}
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
-
-	if (fd_to == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: cant write to %s\n", argv[2]);
-		exit(99);
-	}
-	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
-	{
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written != bytes_read)
+		dprintf(STDERR_FILENO, "Usage: cp file file_to\n"), exit(97);
+	input_fd = open(argv[1], O_RDONLY);
+	if (input_fd == -1)
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]), exit(98);
+	output_fd = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
+	if (output_fd == -1)
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
+	do {
+		istatus = read(input_fd, buf, MAX_BUF_SIZE);
+		if (istatus == -1)
 		{
-			dprintf(STDERR_FILENO, "ERROR: cant write to %s\n", argv[2]);
-			exit(99);
+			dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+			exit(98);
 		}
-	}
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: cant read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (close(fd_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: cant close fd %d\n", fd_from);
-		exit(100);
-	}
-	if (close(fd_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "ERROR: cant close fd %d\n", fd_to);
-		exit(100);
-	}
+		if (istatus > 0)
+		{
+			ostatus = write(output_fd, buf, (ssize_t) istatus);
+			if (ostatus == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+				exit(99);
+			}
+		}
+	} while (istatus > 0);
+	istatus = close(input_fd);
+	if (istatus == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", input_fd), exit(100);
+	ostatus = close(output_fd);
+	if (ostatus == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", output_fd), exit(100);
 	return (0);
 }
