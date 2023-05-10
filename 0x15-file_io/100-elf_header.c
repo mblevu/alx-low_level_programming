@@ -25,6 +25,7 @@ void print_magic(unsigned char *e_ident)
 void print_elf_osabi(Elf64_Ehdr *header)
 {
 	printf("OS?ABI:                ");
+	
 	switch (header->e_ident[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:
