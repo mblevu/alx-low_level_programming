@@ -7,7 +7,6 @@
  * Return: 0
  */
 
-
 int main(int argc, char *argv[])
 {
 	int input_fd, output_fd, istatus, ostatus;
