@@ -12,3 +12,4 @@ OS/ABI: The operating system and ABI (Application Binary Interface) used by the 
 ABI Version: The version of the ABI used by the file.
 Type: The type of the file (e.g., executable, shared object, core dump).
 Entry point address: The memory address where execution should start when the file is executed.
+
