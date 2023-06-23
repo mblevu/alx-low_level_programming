@@ -13,4 +13,4 @@ rm *.o
 # mv liball.so /path/to/destination
 
 # Print success message
-echo "Dynamic library liball.so created successfully"
+#echo "Dynamic library liball.so created successfully"
