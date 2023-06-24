@@ -1,4 +1,4 @@
 *.o
 test.c
 .vscode/
-0-main.c
+*.c
