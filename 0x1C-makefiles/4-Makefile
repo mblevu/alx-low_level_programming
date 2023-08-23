@@ -1,0 +1,44 @@
+# Makefile for school executable
+
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Source files
+SRC = main.c school.c
+
+# Object files (automatically generated from SRC)
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Program to delete files
+RM = rm -f
+
+# Default target
+all: $(NAME)
+
+# Build the executable using object files
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+# Compile source files into object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+# Clean up the generated files and temporary files
+clean:
+	$(RM) $(NAME) *~ \#*\# .\#*
+
+# Clean up the object files
+oclean:
+	$(RM) $(OBJ)
+
+# Clean up the generated files, temporary files, and object files
+fclean: clean oclean
+
+# Recompile all source files
+re: fclean all
