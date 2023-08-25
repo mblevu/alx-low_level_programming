@@ -19,9 +19,9 @@ oclean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) *~
 
 re: fclean all
 
 %.o:%.c m.h
-	$(CC) $(CFLAGS) -c $< -o $e
+	$(CC) $(CFLAGS) -c $< -o $@
